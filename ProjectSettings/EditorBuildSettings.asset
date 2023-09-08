@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/CastlingNumbers/Scenes/MenuScene.unity
+    guid: 5ddb4a9a8d70e294fa8f72ba1a6db370
+  - enabled: 1
     path: Assets/CastlingNumbers/Scenes/GameplayScene.unity
     guid: 3fc8acdd13e6c734bafef6554d6fdbcd
   m_configObjects:
