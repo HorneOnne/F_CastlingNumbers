@@ -12,4 +12,6 @@ EditorBuildSettings:
     path: Assets/CastlingNumbers/Scenes/GameplayScene.unity
     guid: 3fc8acdd13e6c734bafef6554d6fdbcd
   m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 8de9dca96872e8e4eb848198fa3d3024, type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 8f413ec9d17b50f4b86188d7d75441c3, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 848487d0dbaa21b4589407e97e79158c, type: 2}

@@ -670,6 +670,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ce79d748069d89b4ca30217e72670f92, type: 2}
   - {fileID: 11400000, guid: 0046113e64715514487735c770930452, type: 2}
   - {fileID: 11400000, guid: 485bc50f4f3484546b5b38f628e33f86, type: 2}
+  - {fileID: 11400000, guid: 07cc6e8707e758d43aa105754f3ea330, type: 2}
   PlayingLevelData: {fileID: 0}
 --- !u!4 &88725880
 Transform:
@@ -2006,6 +2007,18 @@ MonoBehaviour:
   - soundType: 6
     audioClips:
     - {fileID: 8300000, guid: 1c1f0beb4a1fff14a9c15ccb9bb77b92, type: 3}
+  - soundType: 4
+    audioClips:
+    - {fileID: 8300000, guid: 6c2ddf56f9e892c4ca31990586b66c68, type: 3}
+  - soundType: 5
+    audioClips:
+    - {fileID: 8300000, guid: 53d56f49ead1a0745b97dd19b76d811c, type: 3}
+  - soundType: 1
+    audioClips:
+    - {fileID: 8300000, guid: a45d13bafbf54904c952ce1e50ffc563, type: 3}
+  - soundType: 2
+    audioClips:
+    - {fileID: 8300000, guid: 789963226d5f2294c88ae12d20e32c9a, type: 3}
   SFXVolume: 1
   BackgroundSoundClip: {fileID: 8300000, guid: 1d4a33ae8ab83bd48b69a816df159eec, type: 3}
   BackgroundVolume: 1

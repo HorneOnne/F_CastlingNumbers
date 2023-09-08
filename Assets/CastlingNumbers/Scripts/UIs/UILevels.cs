@@ -22,8 +22,7 @@ namespace CastlingNumbers
             {
                 SoundManager.Instance.PlaySound(SoundType.Button, false);
 
-                UIManager.Instance.CloseAll();
-                UIManager.Instance.DisplayMainMenu(true);
+                UIGameplayManager.Instance.DisplayLevelMenu(false);
             });
         }
 

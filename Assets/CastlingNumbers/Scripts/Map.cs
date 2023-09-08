@@ -5,9 +5,9 @@ namespace CastlingNumbers
 {
     public class Map : MonoBehaviour
     {
+        public int MaxMove;
         public List<Node> Nodes;
         public List<Path> Paths;
-
         public List<SpawnBallNode> DefaultBalls;
 
 

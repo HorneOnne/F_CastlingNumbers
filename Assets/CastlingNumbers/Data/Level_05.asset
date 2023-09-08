@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level_05
   m_EditorClassIdentifier: 
   Level: 5
-  IsLocking: 0
-  OrthographicCameraSize: 5
+  IsLocking: 1
+  OrthographicCameraSize: 5.5
   CameraOffset: {x: 0, y: 0}
-  MapPrefab: {fileID: 7708843158297546979, guid: ac4db38acd3a129478f61d0779ed3a3a, type: 3}
+  MapPrefab: {fileID: 3292943757970559504, guid: 31bc31eb11b227c4e81722f1f54c204f, type: 3}

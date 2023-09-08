@@ -51,14 +51,15 @@ namespace CastlingNumbers
 
         private void OnMouseDown()
         {
+            if (GameplayManager.Instance.CurrentState != GameplayManager.GameState.PLAYING) return;
             if (GameLogicHandler.Instance.CanMoveBall == false) return; 
 
             List<Vector2> waypoints = GameLogicHandler.Instance.GetPath(_currentNode, out Node targetNode);
-            //Debug.Log($"Move {waypoints.Count}");
             if(targetNode != null)
             {
-                GameLogicHandler.Instance.CanMoveBall = false;
+                SoundManager.Instance.PlaySound(SoundType.Hit, false);
 
+                GameLogicHandler.Instance.CanMoveBall = false;
                 _currentNode.SetBall(null);
 
                 SetNode(targetNode);
@@ -66,12 +67,14 @@ namespace CastlingNumbers
 
                 StartCoroutine(MoveThroughWaypoints(waypoints, () =>
                 {
-                    Debug.Log("Finish move");
+                    GameLogicHandler.Instance.CurrentMove++;
                     OnBallMoveFinished?.Invoke();
                 }));
-
             }
-
+            else
+            {
+                SoundManager.Instance.PlaySound(SoundType.HitEnemy, false);
+            }
 
 
         }

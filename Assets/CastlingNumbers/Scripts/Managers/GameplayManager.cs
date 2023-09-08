@@ -82,7 +82,12 @@ namespace CastlingNumbers
                     OnPlaying?.Invoke();             
                     break;
                 case GameState.WIN:
-
+                    GameManager.Instance.LevelUp();
+                    StartCoroutine(Utilities.WaitAfter(0.5f, () =>
+                    {
+                        SoundManager.Instance.PlaySound(SoundType.Win, false);
+                        UIGameplayManager.Instance.DisplayWinMenu(true);
+                    }));
 
                     OnWin?.Invoke();
                     break;
@@ -90,7 +95,6 @@ namespace CastlingNumbers
                     StartCoroutine(Utilities.WaitAfter(0.5f, () =>
                     {
                         SoundManager.Instance.PlaySound(SoundType.GameOver, false);
-                        UIGameplayManager.Instance.CloseAll();
                         UIGameplayManager.Instance.DisplayGameoverMenu(true);
                     }));
                     

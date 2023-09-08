@@ -7,8 +7,7 @@ namespace CastlingNumbers
     {
         public static GameLogicHandler Instance { get; private set; }
 
-        //public List<Node> Nodes;
-        //public List<Path> Paths;
+        private LevelData _levelData;
         [SerializeField] private Map _map;
 
         [Header("Prefabs")]
@@ -16,6 +15,8 @@ namespace CastlingNumbers
 
         private List<Ball> balls = new List<Ball>();
         public bool CanMoveBall { get; set; } = true;
+        public int MaxMove { get => _map.MaxMove; }
+        public int CurrentMove { get; set; } = 0;
 
         private void Awake()
         {
@@ -35,6 +36,8 @@ namespace CastlingNumbers
 
         private void Start()
         {
+            LoadLevelData();
+
             for (int i = 0; i < _map.Nodes.Count; i++)
             {
                 _map.Nodes[i].SetNumber(i + 1);
@@ -45,6 +48,19 @@ namespace CastlingNumbers
                 Ball ball = SpawnBall(defaultBall.Node, defaultBall.BallNumber);
                 balls.Add(ball);
             }
+        }
+
+        private void LoadLevelData()
+        {
+            this._levelData = GameManager.Instance.PlayingLevelData;
+            var mainCam = Camera.main;
+            mainCam.orthographicSize = _levelData.OrthographicCameraSize;
+            Vector3 newPosition = new Vector3(mainCam.transform.position.x + _levelData.CameraOffset.x, mainCam.transform.position.y + _levelData.CameraOffset.y, mainCam.transform.position.z);
+            mainCam.transform.position = newPosition;
+
+            Map mapPrefab = _levelData.MapPrefab;
+
+            _map = Instantiate(mapPrefab);
         }
 
         private Ball SpawnBall(Node node, int number)
@@ -60,8 +76,17 @@ namespace CastlingNumbers
 
         private void BallMoveFinishedHandler()
         {
+            if (GameplayManager.Instance.CurrentState != GameplayManager.GameState.PLAYING) return;
+
             bool isWin = IsWinning();
-            Debug.Log(isWin);
+            //if(CurrentMove == MaxMove)
+            //{
+            //    GameplayManager.Instance.ChangeGameState(GameplayManager.GameState.GAMEOVER);
+            //}
+            if(isWin)
+            {
+                GameplayManager.Instance.ChangeGameState(GameplayManager.GameState.WIN);
+            }
         }
 
         public bool IsWinning()

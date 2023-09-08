@@ -4,15 +4,15 @@ using TMPro;
 
 namespace CastlingNumbers
 {
-    public class UIGameover : CustomCanvas
+    public class UIWin: CustomCanvas
     {
         [Header("Buttons")]
-        [SerializeField] private Button _replayBtn;
+        [SerializeField] private Button _nextBtn;
 
 
         private void Start()
         {
-            _replayBtn.onClick.AddListener(() =>
+            _nextBtn.onClick.AddListener(() =>
             {
                 SoundManager.Instance.PlaySound(SoundType.Button, false);
 
@@ -23,7 +23,7 @@ namespace CastlingNumbers
 
         private void OnDestroy()
         {
-            _replayBtn.onClick.RemoveAllListeners();
+            _nextBtn.onClick.RemoveAllListeners();
         }
     }
 }

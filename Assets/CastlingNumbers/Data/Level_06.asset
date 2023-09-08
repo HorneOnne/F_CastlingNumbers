@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 678c5018751946946be551ad35ba1a02, type: 3}
-  m_Name: Level_02
+  m_Name: Level_06
   m_EditorClassIdentifier: 
-  Level: 2
+  Level: 6
   IsLocking: 1
   OrthographicCameraSize: 5.5
   CameraOffset: {x: 0, y: 0}
-  MapPrefab: {fileID: 6117634910259034661, guid: 2de700de2b7a43749aeeae684a3d7d3f, type: 3}
+  MapPrefab: {fileID: 4831649073630258390, guid: f677ede4a033e0743bfe354396cd004e, type: 3}

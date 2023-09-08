@@ -7,44 +7,52 @@ namespace CastlingNumbers
     public class UIGameplay : CustomCanvas
     {
         [Header("Buttons")]
-        [SerializeField] private Button _homeBtn;
+        [SerializeField] private Button _levelBtn;
+        [SerializeField] private Button _replayBtn;
 
         [Header("Texts")]
-        [SerializeField] private TextMeshProUGUI _scoreText;
+        [SerializeField] private TextMeshProUGUI _levelText;
+        [SerializeField] private TextMeshProUGUI _moveText;
 
         private void OnEnable()
         {
-            GameManager.OnScoreUp += UpdateScoreUI;
+            Ball.OnBallMoveFinished += UpdateMoveText;
         }
 
         private void OnDisable()
         {
-            GameManager.OnScoreUp -= UpdateScoreUI;
+            Ball.OnBallMoveFinished -= UpdateMoveText;
         }
 
 
         private void Start()
         {
-            UpdateScoreUI();
-            
-            _homeBtn.onClick.AddListener(() =>
+            _levelText.text = $"LEVEL {GameManager.Instance.PlayingLevelData.Level}";
+            UpdateMoveText();
+
+            _levelBtn.onClick.AddListener(() =>
+            {
+                SoundManager.Instance.PlaySound(SoundType.Button, false);
+                UIGameplayManager.Instance.DisplayLevelMenu(true);
+            });
+
+            _replayBtn.onClick.AddListener(() =>
             {
                 SoundManager.Instance.PlaySound(SoundType.Button, false);
 
-                Loader.Load(Loader.Scene.MenuScene);
+                Loader.Load(Loader.Scene.GameplayScene);
             });
-
         }
 
         private void OnDestroy()
         {
-            _homeBtn.onClick.RemoveAllListeners();
+            _levelBtn.onClick.RemoveAllListeners();
+            _replayBtn.onClick.RemoveAllListeners();
         }
 
-        private void UpdateScoreUI()
+        private void UpdateMoveText()
         {
-            _scoreText.text = $"{GameManager.Instance.Score}";
+            _moveText.text = $"MOVE {GameLogicHandler.Instance.CurrentMove}/{GameLogicHandler.Instance.MaxMove}";
         }
-
     }
 }

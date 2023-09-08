@@ -81,6 +81,7 @@ namespace CastlingNumbers
                 if (LevelsData[i].Level == nextLevel)
                 {
                     PlayingLevelData = LevelsData[i];
+                    PlayingLevelData.IsLocking = false;
                     break;
                 }
             }
